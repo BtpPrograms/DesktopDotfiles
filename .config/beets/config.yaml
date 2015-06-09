@@ -1,0 +1,4 @@
+directory: /mnt/1TB/Music/Beets
+
+paths:
+    default: $artist/$title

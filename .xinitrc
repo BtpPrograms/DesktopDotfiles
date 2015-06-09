@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# exec gnome-session
+# exec startkde
+# exec startxfce4
+# ...or the Window Manager of your choice
+
+xrandr --output HDMI-2 --right-of DVI-I-3
+xrdb ~/.Xresources
+
+xset r rate 200 20
+setxkbmap -option caps:escape
+sh ~/.fehbg
+sxhkd &
+exec bspwm
+

@@ -1,0 +1,12 @@
+! Transparency
+URxvt.transparent: true
+! URxvt.tintColor: #6CB5FF
+URxvt.tintColor: #2E3D4C
+
+! Font
+URxvt.foreground: #66FF66
+
+! Disable Scrollbar
+URxvt.scrollBar: false
+
+
