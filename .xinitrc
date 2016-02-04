@@ -11,12 +11,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# exec gnome-session
-# exec startkde
-# exec startxfce4
-# ...or the Window Manager of your choice
-
-xrandr --output HDMI-2 --right-of DVI-I-3
 xrdb ~/.Xresources
 
 xset r rate 200 20
