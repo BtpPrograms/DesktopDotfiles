@@ -16,12 +16,22 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 
-xrandr --output HDMI-2 --right-of DVI-I-3
 xrdb ~/.Xresources
 
 xset r rate 200 20
+xset s off -dpms
+xset s off
 setxkbmap -option caps:escape
 sh ~/.fehbg
+
+# Disable PC Speaker
+xset -b
+
+# Set clipboards to synchronize
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
+
+#hhpc &
 sxhkd &
 exec bspwm
 

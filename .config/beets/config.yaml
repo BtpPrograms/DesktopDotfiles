@@ -1,4 +1,14 @@
-directory: /mnt/1TB/Music/Beets
-
+library: ~/Music/Beets/library.db
+directory: ~/Music/Beets
 paths:
-    default: $artist/$title
+     default: $artist/$album%aunique{}/$title
+     singleton: $artist/Singles/$title
+asciify_paths: yes
+
+plugins: info duplicates fromfilename scrub ftintitle fetchart embedart
+
+scrub:
+    auto: yes
+
+fetchart:
+    sources: coverart itunes amazon albumart wikipedia google

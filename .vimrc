@@ -10,9 +10,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
 Plugin 'klen/python-mode'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'tmhedberg/SimpylFold'
 
 call vundle#end()
 
@@ -30,24 +29,30 @@ set pastetoggle=<s>
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set softtabstop=4
+
+" Set Leader Key to , "
+let mapleader=","
+
+" Place line on current location of cursor "
+set cursorline
 
 " Set up Powerline 
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set laststatus=2
 
-" Key to active NerdTree
-map <F2> :NERDTreeToggle<CR>
+" Map keys to move between splits "
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
-" Python - Highlight Line Length  
-augroup vimrc_autocmds
-    autocmd!
-    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python match Excess /\%120v.*/
-    autocmd FileType python set nowrap
-    augroup END
+" Add Arduino syntax file "
+au BufRead,BufNewFile *.pde set filetype=arduino
+au BufRead,BufNewFile *.ino set filetype=arduino
 
 "Python - Setup 
-let g:pymode_rope = 0 
+let g:pymode_rope = 1
 
 " Documentation
 let g:pymode_doc = 1
@@ -72,5 +77,37 @@ let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
+" Set up lint configuration and set line length of 120
+let g:pymode_lint_config = '$HOME/.pylint.rc'
+let g:pymode_options_max_line_length=120
+
+" Set up column to match line length of 120
+autocmd FileType python set colorcolumn=120
+
+" Change background color of color column 
+highlight ColorColumn ctermbg=241
+
 " Don't autofold code
 let g:pymode_folding = 0
+
+" Change background color of fold
+highlight Folded ctermbg=241
+
+" Dvorak Keybindings
+no d h
+no h j
+no t k
+no n l
+no s :
+no S :
+no j d
+no l n
+no L N
+
+no - $
+no _ ^
+no N <C-w><C-w>
+no T <C-w><C-r>
+no H 8<Down>
+no T 8<Up>
+no D <C-w><C-r>
