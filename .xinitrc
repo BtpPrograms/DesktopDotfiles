@@ -16,13 +16,16 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 
+# Loads terminal colors
 xrdb ~/.Xresources
 
+# Disable pc speaker beeing
+xset -b
+
+# Sets key repeat rate
 xset r rate 200 20
 xset s off -dpms
 xset s off
-xinput --set-prop 8 'Device Accel Constant Deceleration' 5.5
-xset m default
 setxkbmap -option caps:escape
 setxkbmap -option escape:caps
 sh ~/.fehbg
@@ -34,7 +37,13 @@ xset -b
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
 
-#hhpc &
+# Binds caps lock to escape
+setxkbmap -option caps:escape
+
+# Runs background image script
+sh ~/.fehbg
+
+# Starts bspwm
 sxhkd &
 exec bspwm
 
