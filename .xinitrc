@@ -21,7 +21,10 @@ xrdb ~/.Xresources
 xset r rate 200 20
 xset s off -dpms
 xset s off
+xinput --set-prop 8 'Device Accel Constant Deceleration' 5.5
+xset m default
 setxkbmap -option caps:escape
+setxkbmap -option escape:caps
 sh ~/.fehbg
 
 # Disable PC Speaker
